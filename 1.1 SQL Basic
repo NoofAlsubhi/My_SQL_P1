@@ -41,7 +41,7 @@ SELECT * FROM movies WHERE id = 2;
 SELECT * FROM movies WHERE release_year >= 1999 ORDER BY release_year;
 
 
-/* Challenge: TODO list database stats
+/* Challenge: TODO list database stats  
 
 Step 1
 Here's a table containing a TODO list with the number of minutes it will take to complete each item. Insert another item to your todo list with the estimated minutes it will take.
