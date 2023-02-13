@@ -1,0 +1,39 @@
+/* Project: Design a store database
+
+Create your own store! Your store should sell one type of things, like clothing or bikes, whatever you want your store to specialize in. You should have a table for all the items in your store, and at least 5 columns for the kind of data you think you'd need to store. You should sell at least 15 items, and use select statements to order your items by price and show at least one statistic about the items.
+*/
+
+CREATE TABLE navada (id INTEGER PRIMARY KEY , Section TEXT ,  categories TEXT );
+
+INSERT INTO  navada VALUES ( 1, "women", "clothing" );
+INSERT INTO  navada VALUES ( 2, "women", "accessories");
+INSERT INTO  navada VALUES ( 3, "women", "shoes" );
+INSERT INTO  navada VALUES ( 4, "men", "clothing" );
+INSERT INTO  navada VALUES ( 5, "men", "accessories" );
+INSERT INTO  navada VALUES ( 6, "men", "shoes" );
+
+
+CREATE TABLE insied_categories (id INTEGER PRIMARY KEY,categories_id INTEGER ,  item TEXT  , price INTEGER );
+INSERT INTO  insied_categories VALUES ( 1, 1, "dresse", 150 );
+INSERT INTO  insied_categories VALUES ( 2, 1, "blazers", 90 );
+INSERT INTO  insied_categories VALUES ( 3, 1, "shirt", 40);
+INSERT INTO  insied_categories VALUES ( 4, 1, "hoodie", 65 );
+INSERT INTO  insied_categories VALUES ( 5, 1, "jeans", 74 );
+INSERT INTO  insied_categories VALUES ( 6, 1, "skirts", 45 );
+INSERT INTO  insied_categories VALUES ( 7, 2, "bag", 25);
+INSERT INTO  insied_categories VALUES ( 8, 2,"jewellery", 15);
+INSERT INTO  insied_categories VALUES ( 9, 3, "trainers", 250 );
+INSERT INTO  insied_categories VALUES ( 10, 3, "boots", 300 );
+INSERT INTO  insied_categories VALUES ( 11, 3, "heels", 157);
+INSERT INTO  insied_categories VALUES ( 12, 4, "shirts", 54 );
+INSERT INTO  insied_categories VALUES ( 13, 4, "polo shirts", 80 );
+INSERT INTO  insied_categories VALUES ( 14, 4, "jeans", 25 );
+INSERT INTO  insied_categories VALUES ( 15, 4, "joggers", 15);
+INSERT INTO  insied_categories VALUES ( 16, 5,"cap", 10);
+INSERT INTO  insied_categories VALUES ( 17, 5, "belt", 27 );
+INSERT INTO  insied_categories VALUES ( 18, 6, "trainrs", 200);
+INSERT INTO  insied_categories VALUES ( 19, 6,"sandals", 19);
+
+SELECT* FROM navada;
+SELECT* FROM insied_categories;
+SELECT MAX(price) FROM insied_categories;
