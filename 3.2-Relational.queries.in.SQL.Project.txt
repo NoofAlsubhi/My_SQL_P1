@@ -1,0 +1,57 @@
+/* Project: Famous people
+
+In this project, you’re going to make your own table with some small set of “famous people”, then make more tables about things they do and join those to create nice human readable lists.
+*/
+
+CREATE TABLE Authors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    author TEXT);
+    
+INSERT INTO Authors (author) VALUES ("Agatha Christie" );
+INSERT INTO Authors (author) VALUES ("Charlotte Bronte");
+INSERT INTO Authors (author) VALUES ("Jane Austen" );
+INSERT INTO Authors (author) VALUES ("Aenaldur Indrioason");
+INSERT INTO Authors (author) VALUES ("Stephenie Meyer");
+
+CREATE TABLE  Books (
+id INTEGER PRIMARY KEY AUTOINCREMENT ,
+Authors_id INTEGER ,
+title TEXT , 
+release INTEGER ,
+num_page INTEGER,
+rating INTEGER);
+
+INSERT INTO Books (Authors_id  , title, release ,num_page ,  rating) VALUES(1,"Ans There Were None" , 2004 , 264 ,4.28);
+INSERT INTO Books  (Authors_id  , title, release , num_page ,rating) VALUES(2,"Jane Eyre", 2003, 532 , 4.14);
+INSERT INTO Books  (Authors_id  , title, release , num_page ,rating) VALUES ( 3,"Pride and Prejudice", 2000 ,279 ,4.28);
+INSERT INTO Books  (Authors_id  , title, release ,num_page ,  rating) VALUES ( 4,"Voices", 2006, 320 , 3.86);
+INSERT INTO Books  (Authors_id  , title, release , num_page , rating) VALUES ( 5,"Twiligt", 2006 , 498, 3.64);
+INSERT INTO Books  (Authors_id  , title, release , num_page , rating) VALUES ( 5,"New Moon", 2006 , 563, 3.58);
+
+CREATE TABLE Fav_books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Book_id INTEGER);
+    
+INSERT INTO Fav_books (Book_id) VALUES (2);
+INSERT INTO Fav_books (Book_id) VALUES (3);
+INSERT INTO Fav_books (Book_id) VALUES (4);
+
+select*from Authors;
+select*from Books;
+
+SELECT Authors.author, 
+Books.title AS"Book name", 
+Books.num_page AS "Pages" ,
+Books.rating AS "Goodreads ratings"
+FROM Authors
+JOIN Books
+ON Authors.id=Books.Authors_id;
+
+-- different code 
+
+SELECT Books.title AS "My Favorites Books", 
+Fav_books.Book_id AS "Rank"
+FROM  Books , Fav_books
+WHERE Books.id=Fav_books.Book_id;
+
+
