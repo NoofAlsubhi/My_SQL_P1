@@ -1,0 +1,81 @@
+/* Project: App impersonator
+
+Think about your favorite apps, and pick one that stores your data- like a game that stores scores, an app that lets you post updates, etc. Now in this project, you're going to imagine that the app stores your data in a SQL database (which is pretty likely!), and write SQL statements that might look like their own SQL.
+
+CREATE a table to store the data.
+INSERT a few example rows in the table.
+Use an UPDATE to emulate what happens when you edit data in the app.
+Use a DELETE to emulate what happens when you delete data in the app.
+*/
+
+/* What does the app's SQL look like? */
+
+create table fitness ( 
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     user_name TEXT,
+     age INTEGER , 
+     wight INTEGER , 
+     hight INTEGER);
+
+INSERT INTO fitness (user_name,age , wight,hight) VALUES ("Rayan", 19 , 75 , 190 );
+
+INSERT INTO fitness (user_name,age , wight,hight) VALUES ("abdalrhman", 21 , 70 , 185);
+
+INSERT INTO fitness (user_name, age , wight,hight) VALUES ("lama", 17 , 60 , 167 );
+
+select *from fitness;
+
+create table step_score ( 
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+ user_id INTEGER ,
+steps_count INTEGER );
+
+INSERT INTO step_score (  user_id ,steps_count ) VALUES (1, 14000  );
+INSERT INTO step_score (  user_id,steps_count) VALUES (2, 10000);
+INSERT INTO step_score (  user_id ,steps_count) VALUES (3, 8000 );
+
+select *from step_score;
+
+ALTER TABLE step_score ADD achievement INTEGER;
+
+UPDATE step_score SET achievement =" you did it what a runner yaaayyy" WHERE id =1;
+
+UPDATE step_score SET achievement =" you made it" WHERE id =2;
+
+SELECT *FROM step_score;
+
+SELECT fitness.user_name AS "User" , 
+step_score.steps_count , 
+step_score.achievement 
+FROM fitness
+LEFT OUTER join step_score
+ON fitness.id= step_score.user_id;
+
+
+create table exercise ( 
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+ user_id INTEGER ,
+type TEXT , 
+minutes INTEGER ,
+calories INTEGER );
+
+INSERT INTO exercise (user_id ,type , minutes, calories ) VALUES (1, "running",40 , 90 );
+INSERT INTO exercise (user_id ,type , minutes, calories) VALUES (1,"skipping" , 20 , 60);
+INSERT INTO exercise (user_id ,type, minutes, calories ) VALUES (1,"boxing" , 20 , 101);
+INSERT INTO exercise (user_id,type, minutes,calories) VALUES (2, "running", 25 , 50);
+INSERT INTO exercise (user_id,type, minutes, calories) VALUES (2, "boxing" ,10, 60);
+INSERT INTO exercise (user_id ,type,minutes, calories) VALUES (3, "cycling", 10, 30 );
+INSERT INTO exercise (user_id ,type , minutes, calories) VALUES (3, "dancing", 20 , 80);
+
+SELECT *FROM exercise;
+
+SELECT fitness.user_name , 
+exercise.type 
+FROM fitness
+LEFT OUTER JOIN exercise
+ON fitness.id= exercise.user_id;
+
+DELETE FROM exercise  WHERE id=5;
+SELECT *FROM exercise;
+
+
